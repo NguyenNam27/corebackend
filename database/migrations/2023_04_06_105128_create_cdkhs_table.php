@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('binnfos', function (Blueprint $table) {
-            $table->form_id();
-            $table->
+        Schema::create('cdkhs', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('binnfos');
+        Schema::dropIfExists('cdkhs');
     }
 };
