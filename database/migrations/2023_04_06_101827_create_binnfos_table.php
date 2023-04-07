@@ -14,8 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('binnfos', function (Blueprint $table) {
-            $table->form_id();
-            $table->
+            $table->string('form_id1',10)->nullable();
+            $table->string('form_id2',10)->nullable();
+            $table->string('form_type',10)->nullable();
+            $table->string('form_name',255)->unique()->nullable();
+            $table->string('form_name2',255)->unique()->nullable();
+            $table->bigInteger('form_order')->nullable();
+            $table->string('form_users',2000)->nullable();
+            $table->string('temp',255)->nullable();
+
             $table->timestamps();
         });
     }
