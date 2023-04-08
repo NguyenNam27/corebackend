@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\cdku>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transport>
  */
-class CdkuFactory extends Factory
+class TransportFactory extends Factory
 {
     /**
      * Define the model's default state.
