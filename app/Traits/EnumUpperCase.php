@@ -6,11 +6,11 @@ namespace App\Traits;
 use Closure;
 use Illuminate\Support\Str;
 
-trait HtqEnumUpperCase
+trait EnumUpperCase
 {
     protected static function values(): Closure
     {
-        return function (string $name) {            
+        return function (string $name) {
             return mb_strtoupper(Str::slug($name));
         };
     }

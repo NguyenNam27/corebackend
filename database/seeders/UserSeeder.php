@@ -5,8 +5,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Str;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -16,43 +17,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user_list = Permission::create(['name' => 'user.list']);
-        $user_view = Permission::create(['name' => 'user.view']);
-        $user_create = Permission::create(['name' => 'user.create']);
-        $user_update = Permission::create(['name' => 'user.update']);
-        $user_delete = Permission::create(['name' => 'user.delete']);
-
-        $admin_role = Role::create(['name' => 'admin']);
-        $admin_role->givePermissionTo([
-            $user_list,
-            $user_view,
-            $user_create,
-            $user_update,
-            $user_delete
-        ]);
-        $admin = User::create([
-            'name'=>'Admin',
-            'email'=>'admin@gmail.com',
-            'password'=>bcrypt('123456'),
-        ]);
-        $admin->assignRole($admin_role);
-        $admin->givePermissionTo([
-            $user_list,
-            $user_view,
-            $user_create,
-            $user_update,
-            $user_delete
-        ]);
-        $user = User::create([
-            'name'=>'User',
-            'email'=>'user@gmail.com',
-            'password'=>bcrypt('123456'),
-        ]);
-        $user_role = Role::create(['name'=>'user']);
-        $user->assignRole($user_role);
-        $admin->givePermissionTo([
-            $user_list,
-        ]);
+        User::create(
+            [
+                'name'=>'Nguyen Ngoc Nam',
+                'user_type' => 'ADMIN',
+                'email' => 'nguyenngocnam00770@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('123456'),
+                'phone'=>'0975720527',
+                'gender'=>'male',
+                'remember_token' => Str::random(10),
+            ]
+        );
+        User::factory(5)->create();
 
     }
 }

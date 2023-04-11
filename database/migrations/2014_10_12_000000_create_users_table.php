@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name',30)->unique();
-            $table->string('comment',30)->nullable();
-            $table->string('comment2',30)->nullable();
-            $table->tinyInteger('admin')->nullable();
+            $table->string('name',30)->nullable();
+            $table->string('email',30)->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password',)->nullable();
+            $table->string('user_type',50)->nullable();
+            $table->string('phone',50)->nullable();
+            $table->string('gender',50)->nullable();
+            $table->text('comment')->nullable();
             $table->text('r_access')->nullable();
             $table->text('r_new')->nullable();
             $table->text('r_del')->nullable();
@@ -31,11 +35,8 @@ return new class extends Migration
             $table->decimal('group_id',3,0)->nullable();
             $table->text('menu_hide')->nullable();
             $table->tinyInteger('language')->nullable();
-            $table->string('email')->nullable();
-            $table->string('status',1)->nullable();
+            $table->string('status',1)->default(1);
             $table->decimal('user_id0',3,0)->nullable();
-
-            $table->decimal('user_id2',3,0)->nullable();
             $table->string('ma_td1',16)->nullable();
             $table->string('ma_td2',16)->nullable();
             $table->string('ma_td3',16)->nullable();
@@ -45,19 +46,6 @@ return new class extends Migration
             $table->string('gc_td1',64)->nullable();
             $table->string('gc_td2',64)->nullable();
             $table->string('gc_td3',64)->nullable();
-
-            $table->string('s1',16)->nullable();
-            $table->string('s2',16)->nullable();
-            $table->string('s3',16)->nullable();
-            $table->decimal('s4',16,4)->nullable();
-            $table->decimal('s5',16,4)->nullable();
-            $table->decimal('s6',16,4)->nullable();
-            $table->decimal('s7',16,4)->nullable();
-            $table->decimal('s8',16,4)->nullable();
-            $table->decimal('s9',16,4)->nullable();
-
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

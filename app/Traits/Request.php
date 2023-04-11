@@ -5,7 +5,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Str;
 
-trait HtqRequest
+trait Request
 {
     abstract function getModel() : string;
 

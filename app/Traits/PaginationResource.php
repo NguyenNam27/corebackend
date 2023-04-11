@@ -5,7 +5,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Arr;
 
-trait HtqPaginationResource
+trait PaginationResource
 {
     /**
      * Transform the resource collection into an array.

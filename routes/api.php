@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedJWTController;
+use App\Http\Controllers\Api\v1\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::prefix('v1')->name('api.v1.')->group(function (){
+
+    Route::prefix('auth')->name('auth.')->controller(AuthenticatedJWTController::class)->group(function (){
+        Route::post('login','store')->name('login');
+        Route::middleware('auth')->group(function (){
+            Route::post('refresh','refresh')->name('refresh');
+            Route::post('verify-token','verifyToken')->name('verifyToken');
+            Route::post('destroy','deytroy')->name('deytroy');
+        });
+    });
+    //role
+    Route::middleware('auth')->group(function (){
+        Route::apiResource('users',UserController::class);
+    });
 });

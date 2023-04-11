@@ -5,7 +5,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\DB;
 
-trait HtqGetNextId
+trait GetNextId
 {
     protected function getNextId() : int
     {
